@@ -31,9 +31,12 @@ if prompt:
         st.session_state["user_prompt_history"].append(prompt)
         st.session_state["chat_answer_history"].append(formatted_response)
         st.session_state["chat_history"].append((prompt,generated_response["answer"]))
-
+count =0
+count2=1000
 if st.session_state["chat_answer_history"]:
     for generated_response, user_query in zip(st.session_state["chat_answer_history"],st.session_state["user_prompt_history"]):
-        message(user_query,is_user=True)
-        message((generated_response))
+        message(user_query,is_user=True,key=str(count))
+        message(generated_response,key=str(count2))
+        count+=1
+        count2+=1
 
